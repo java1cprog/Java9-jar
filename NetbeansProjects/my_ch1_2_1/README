@@ -1,0 +1,11 @@
+#update information of the module
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar -u -f dist/com.me.jar -v --module-version 0.2 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+
+#Describe module
+jar --file dist/com.me.jar --describe-module
+
+#Add module-version
+#Remove a file
+rm dist/com.me.jar

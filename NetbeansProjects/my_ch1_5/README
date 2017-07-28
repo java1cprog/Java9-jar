@@ -1,0 +1,28 @@
+# --release VERSION
+#Places all following files in a versioned directory
+
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 --release 1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+//release 1 not valid, must be >=9
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 --release 9 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 --release 10 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 --release 11 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 --release 12 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 --release 13 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 --release 14 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 --release 15 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 --release 16 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 --release 17 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 --release 18 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 --release 19 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --update --file dist/com.me.jar --verbose --module-version 0.1 --release 20 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#List the table
+jar --list --file=dist/com.me.jar
+jar -t --file=dist/com.me.jar
+
+
+#Describe module
+jar --file dist/com.me.jar --describe-module
+
+#Add module-version
+#Remove a file
+rm dist/com.me.jar

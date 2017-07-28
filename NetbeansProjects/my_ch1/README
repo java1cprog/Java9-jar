@@ -1,0 +1,21 @@
+#Create simple module jar-file.
+#Remove a file
+rm dist/com.me.jar
+
+#Create simple module jar-file.
+#Module "com.me" class files are in build/modules
+#Create jar-file in a dist folder.
+#Current directory is "my_ch1".
+#Ways to create simple module jar-file:
+jar --create --file dist/com.me.jar -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar -c -f dist/com.me.jar -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar -cf dist/com.me.jar -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#Add verbose option
+jar --create --file dist/com.me.jar --verbose -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar -c -f dist/com.me.jar -v -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar -cfv dist/com.me.jar -C build/modules/cojar -c -f dist/com.me.jar -v -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.classm.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#Describe module
+
+jar --file dist/com.me.jar --describe-module

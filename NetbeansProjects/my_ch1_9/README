@@ -1,0 +1,19 @@
+# --hash-modules
+# --module-path
+
+#it is Ok, but
+# warning: no module is recorded in hash in com.me
+jar --create --file dist/com.me.jar --main-class=com.me.A --hash-modules=1 --verbose --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+# warning: no module is recorded in hash in com.me
+jar --hash-modules com.me.util --module-path "dist\com.me.jar;dist\com.me.util.jar"  --update --file dist/com.me.jar --main-class=com.me.A --verbose --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --hash-modules "com.me.util;com.me.util" --module-path "dist\com.me.jar;dist\com.me.util.jar"  --update --file dist/com.me.jar --main-class=com.me.A --verbose --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+
+
+#Describe module
+jar --file dist/com.me.jar --describe-module
+
+#Add module-version
+#Remove a file
+rm dist/com.me.jar

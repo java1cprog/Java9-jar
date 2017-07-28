@@ -1,0 +1,24 @@
+# —e=CLASSNAME or --main-class=CLASSNAME
+#Specifies the application entry point for stand-alone applications bundled 
+# into a modular or executable modular JAR file.
+
+#no effect
+jar --create --file dist/com.me.jar --main-class=CLASSNAME --verbose --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#it is Ok
+jar --create --file dist/com.me.jar --main-class=com.me.A --verbose --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar -c -f dist/com.me.jar -e com.me.A -v --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#this wrong "--main-class" option also worked
+jar -c -f dist/com.me.jar -e com.me.B -v --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#List the table
+jar --list --file=dist/com.me.jar
+jar -t --file=dist/com.me.jar
+
+
+#Describe module
+jar --file dist/com.me.jar --describe-module
+
+#Add module-version
+#Remove a file
+rm dist/com.me.jar

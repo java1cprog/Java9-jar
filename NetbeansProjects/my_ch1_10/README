@@ -1,0 +1,18 @@
+# @files
+
+jar --create --file dist/com.me.jar --verbose --module-version 0.1 --main-class=com.me.A -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --create --file dist/com.me.jar --verbose --module-version 0.1 --main-class com.me.A  @classes1.list
+jar --create --file dist/com.me.jar --verbose --module-version 0.1 @classes2.list
+jar --create --file dist/com.me.jar @classes4.list
+
+#List the table
+jar --list --file=dist/com.me.jar
+jar -t --file=dist/com.me.jar
+
+
+#Describe module
+jar --file dist/com.me.jar --describe-module
+
+#Add module-version
+#Remove a file
+rm dist/com.me.jar

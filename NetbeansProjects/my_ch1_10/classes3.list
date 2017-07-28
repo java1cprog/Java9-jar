@@ -1,0 +1,6 @@
+--module-version 0.1
+--main-class com.me.A
+-C build/modules/com.me
+module-info.class 
+build/modules/com.me/com/me/A.class 
+build/modules/com.me/com/me/B.class

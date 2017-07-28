@@ -1,0 +1,17 @@
+#Generate index information for the specified jar archive
+
+jar --generate-index=dist/com.me.jar
+jar --generate-index dist/com.me.jar
+jar -i dist/com.me.jar
+
+#List the table
+jar --list --file=dist/com.me.jar
+jar -t --file=dist/com.me.jar
+
+
+#Describe module
+jar --file dist/com.me.jar --describe-module
+
+#Add module-version
+#Remove a file
+rm dist/com.me.jar

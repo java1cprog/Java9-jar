@@ -1,0 +1,23 @@
+# -M; --no-manifest
+# Doesn’t create a manifest file for the entries.
+
+jar --create --file dist/com.me.jar --manifest=MANIFEST.MF --normalize --verbose --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar -c -f dist/com.me.jar -m MANIFEST.MF -n -v --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+# --no-manifest has no effect in update operation
+jar --update --file dist/com.me.jar --no-manifest  --verbose -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+# creating jar-file without manifest
+jar --create --file dist/com.me.jar --no-manifest  --verbose -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#List the table
+jar --list --file=dist/com.me.jar
+jar -t --file=dist/com.me.jar
+
+
+#Describe module
+jar --file dist/com.me.jar --describe-module
+
+#Add module-version
+#Remove a file
+rm dist/com.me.jar

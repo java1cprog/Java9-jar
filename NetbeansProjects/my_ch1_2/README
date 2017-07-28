@@ -1,0 +1,127 @@
+#Add module-version
+jar --create --file dist/com.me.jar --verbose --module-version 0 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar -c -f dist/com.me.jar -v --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar -c -f dist/com.me.jar -v --module-version 0.1.0.1.0.1.0.1.0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar -c -f dist/com.me.jar -v --module-version 1# -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+# "$"
+#"$" can not be along (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version $ -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#"$" can not be the first character in the module-version
+jar -c -f dist/com.me.jar -v --module-version $1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+# "#"
+# "#" can not be along
+jar -c -f dist/com.me.jar -v --module-version # -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+# "1#" is Ok
+jar -c -f dist/com.me.jar -v --module-version 1# -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#"$" can not be the first character in the module-version
+jar -c -f dist/com.me.jar -v --module-version #1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+# %
+#"%" can not be along (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version % -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#It is Ok
+jar -c -f dist/com.me.jar -v --module-version 1% -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#"%1" can not be the first character in the module-version (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version %1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+# ^
+#"^" can not be along (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version ^ -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#It is Ok
+jar -c -f dist/com.me.jar -v --module-version 1^ -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#"^1" can not be the first character in the module-version (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version ^1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#&
+#"&" Parsing error. Jar can not parse the command line.
+jar -c -f dist/com.me.jar -v --module-version & -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#"1&". Parsing error. Jar can not parse the command line.
+jar -c -f dist/com.me.jar -v --module-version 1& -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#"&1". Parsing error. Jar can not parse the command line.
+jar -c -f dist/com.me.jar -v --module-version &1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#*
+#"*" can not be along (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version * -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#It is Ok
+jar -c -f dist/com.me.jar -v --module-version 1* -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#"*1" can not be along (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version *1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#(
+# '(' bash error
+# '1(' bash error
+jar -c -f dist/com.me.jar -v --module-version ( -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+# '(1' bash error
+jar -c -f dist/com.me.jar -v --module-version 1( -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#()
+# "()" (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version "()" -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+# "(" (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version "(" -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#[
+# "[" (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version "[" -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#{
+# "{" (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version "{" -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#-
+# - Parsing error.
+jar -c -f dist/com.me.jar -v --module-version - -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+# 1-: Empty pre-release
+jar -c -f dist/com.me.jar -v --module-version 1- -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+# -1 Parsing error.
+jar -c -f dist/com.me.jar -v --module-version -1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#It is Ok
+jar -c -f dist/com.me.jar -v --module-version 1-1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#_
+# "_" (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version _ -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#1_ It is Ok.
+jar -c -f dist/com.me.jar -v --module-version 1_ -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+# "_1" (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version _1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#+
+# "+" (IllegalArgumentExeption is thrown 'Version string does not start with a number')
+jar -c -f dist/com.me.jar -v --module-version "+" -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+# "1+" (IllegalArgumentExeption is thrown 'Empty pre-release')
+jar -c -f dist/com.me.jar -v --module-version "1+" -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#=
+#It is Ok.
+jar -c -f dist/com.me.jar -v --module-version "1=" -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#| 
+#It is Ok.
+jar -c -f dist/com.me.jar -v --module-version "1|" -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#\
+#Unexpected behavior
+jar -c -f dist/com.me.jar -v --module-version "1\" -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+# 1\ Parsing error.
+jar -c -f dist/com.me.jar -v --module-version 1\ -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#/
+#It is Ok
+jar -c -f dist/com.me.jar -v --module-version 1/ -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+#It is Ok
+jar -c -f dist/com.me.jar -v --module-version 1/1/2/3/4/5 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#@
+#It is Ok.
+jar -c -f dist/com.me.jar -v --module-version 1@ -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+
+#Describe module
+jar --file dist/com.me.jar --describe-module
+
+#Add module-version
+#Remove a file
+rm dist/com.me.jar

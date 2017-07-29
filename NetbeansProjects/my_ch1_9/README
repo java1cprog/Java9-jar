@@ -4,15 +4,26 @@
 #it is Ok, but
 # warning: no module is recorded in hash in com.me
 jar --create --file dist/com.me.jar --main-class=com.me.A --hash-modules=1 --verbose --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
+jar --update --file dist/com.me.jar --main-class=com.me.A --verbose --module-version 0.2 -C build/modules/com.me module-info.class
 
 # warning: no module is recorded in hash in com.me
 jar --hash-modules com.me.util --module-path "dist\com.me.jar;dist\com.me.util.jar"  --update --file dist/com.me.jar --main-class=com.me.A --verbose --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
 jar --hash-modules "com.me.util;com.me.util" --module-path "dist\com.me.jar;dist\com.me.util.jar"  --update --file dist/com.me.jar --main-class=com.me.A --verbose --module-version 0.1 -C build/modules/com.me module-info.class build/modules/com.me/com/me/A.class build/modules/com.me/com/me/B.class
 
+#Working command:
+#Create module
+jar --hash-modules "com.me" --module-path "dist/com.me.jar" --verbose --create --file dist/com.me.util.jar -C build/modules/com.me.util module-info.class  build/modules/com.me.util/com/me/util/Util.class
+jar --hash-modules "com.me" --module-path "dist/com.me.jar" -v -c -f dist/com.me.util.jar -C build/modules/com.me.util module-info.class  build/modules/com.me.util/com/me/util/Util.class
 
+#Update module:
+jar --hash-modules "com.me" --module-path "dist/com.me.jar" --verbose --update --file dist/com.me.util.jar -C build/modules/com.me.util module-info.class
+jar --hash-modules "com.me" --module-path "dist/com.me.jar" -v -u -f dist/com.me.util.jar -C build/modules/com.me.util module-info.class
 
 #Describe module
 jar --file dist/com.me.jar --describe-module
+jar --file dist/com.me.util.jar --describe-module
+#list of the jar file content
+
 
 #Add module-version
 #Remove a file
